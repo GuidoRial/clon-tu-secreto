@@ -1,0 +1,11 @@
+nav {
+    background-color: #0063cf;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+nav > p {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}

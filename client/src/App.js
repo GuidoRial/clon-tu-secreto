@@ -1,32 +1,23 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import Axios from "axios";
+
+import Header from "./components/Header/Header";
+import SecretsContainer from "./components/SecretsContainer/SecretsContainer";
 
 function App() {
-    const [secrets, setSecrets] = useState([]);
-    const [edad, setEdad] = useState(0);
-    const [sexo, setSexo] = useState("");
-    const [secreto, setSecreto] = useState("");
 
-    useEffect(() => {
-        Axios.get("http://localhost:3001/getSecrets").then((response) => {
-            setSecrets(response.data);
-        });
-    }, []);
 
-    const sendSecret = () => {
-        Axios.post("http://localhost:3001/createSecret", {
-            edad,
-            sexo,
-            secreto,
-        }).then((response) => {
-            setSecrets([...secrets, { edad, sexo, secreto }]);
-        });
-    };
+
+
+
+
 
     return (
         <div className="App">
-            <div className="secrets-display">
+            <Header />
+            
+            <SecretsContainer />
+            {/*<div className="secrets-display">
                 {secrets.map((secret) => (
                     <div className="secret">
                         {secret.edad}
@@ -52,7 +43,7 @@ function App() {
                     onChange={(e) => setSecreto(e.target.value)}
                 />
                 <button onClick={sendSecret}>ENVIAR</button>
-            </form>
+            </form> */}
         </div>
     );
 }
