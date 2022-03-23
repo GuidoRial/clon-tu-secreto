@@ -11,18 +11,22 @@ function SecretsContainer() {
     const [writeSecret, setWriteSecret] = useState(false);
 
     const sendSecret = (e) => {
+        if (age === "" || sex === "" || secret === "") {
+            alert("Los datos no pueden estar vacios");
+            return;
+        }
         Axios.post("http://localhost:3001/createSecret", {
             edad: age,
             sexo: sex,
             secreto: secret,
         }).then((response) => {
             setSecrets([
-                ...secrets,
                 {
                     edad: age,
                     sexo: sex,
                     secreto: secret,
                 },
+                ...secrets,
             ]);
         });
     };
@@ -31,6 +35,7 @@ function SecretsContainer() {
         Axios.get("http://localhost:3001/getSecrets").then((response) => {
             setSecrets(response.data);
         });
+        secrets.reverse();
     }, []);
 
     return (
