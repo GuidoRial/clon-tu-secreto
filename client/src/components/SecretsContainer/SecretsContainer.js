@@ -15,7 +15,7 @@ function SecretsContainer() {
             alert("Los datos no pueden estar vacios");
             return;
         }
-        Axios.post("http://localhost:3001/createSecret", {
+        Axios.post("http://localhost:3002/createSecret", {
             edad: age,
             sexo: sex,
             secreto: secret,
@@ -32,7 +32,7 @@ function SecretsContainer() {
     };
 
     useEffect(() => {
-        Axios.get("http://localhost:3001/getSecrets").then((response) => {
+        Axios.get("http://localhost:3002/getSecrets").then((response) => {
             setSecrets(response.data);
         });
         secrets.reverse();

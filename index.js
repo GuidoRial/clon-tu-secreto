@@ -27,6 +27,6 @@ app.post("/createSecret", async (req, res) => {
     res.json(newSecret);
 });
 
-app.listen(3001, () => {
+app.listen(3002, () => {
     console.log("server running!");
 });
