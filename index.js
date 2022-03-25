@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 const SecretModel = require("./models/Secrets");
 const cors = require("cors");
+const path = require("path");
+
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
@@ -27,6 +30,12 @@ app.post("/createSecret", async (req, res) => {
     res.json(newSecret);
 });
 
-app.listen(3002, () => {
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(PORT, () => {
     console.log("server running!");
 });
